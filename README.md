@@ -1,4 +1,8 @@
-# README #
+# Modal Killer #
+
+An extension for Google Chrome to destroy modal windows as soon as they are added to the DOM
+
+# Why? #
 
 Modal windows have become the new pop-up window. Just as pop-up windows were abused by devs in the late '90s to sell advertising, so too are modal windows being abused to bug users into signing up for accounts, signing up for newsletters, or drawing attention to something else the user probably doesn't care about.
 
