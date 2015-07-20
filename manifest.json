@@ -1,9 +1,9 @@
 ﻿{
   "manifest_version": 2,
 
-  "name": "Remove annoying new-age 'modal' popups",
-  "description": "This extension automatically blocks annoying 'modal' popup overlays that overlay your screen and beg you to sign up for a newsletter, demand you register, offer discounts, etc and interrupt what you are reading or looking at",
-  "version": "1.0",
+  "name": "NOverlay",
+  "description": "NOverlay automatically blocks annoying overlays (popups, modal windows) that block your view of a web page and demand your attention, hoping you'll donate, join a newsletter, demand you register, offer discounts, advertise, etc",
+  "version": "0.1",
 
   "browser_action": {
     "default_icon": "icon.png",
@@ -20,7 +20,7 @@
 
   "permissions": [
     "tabs",
-	"http://*/*",
+	  "http://*/*",
     "https://ajax.googleapis.com/"
   ]
 }

@@ -1,30 +1,25 @@
-﻿var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+var observeDOM = (function(){
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
+        eventListenerSupported = window.addEventListener;
 
-var observer = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
-        if (mutation.addedNodes[0] == null || mutation.addedNodes[0].parentNode == null) return;
-        var node = mutation.addedNodes[0];
-        try {
-            node.parentNode.removeChild(node);
-        } catch(e) {
-            console.log(mutation);
+    return function(obj, callback){
+        if( MutationObserver ){
+            // define a new observer
+            var obs = new MutationObserver(function(mutations, observer){
+                if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
+                    callback();
+            });
+            // have the observer observe foo for changes in children
+            obs.observe( obj, { childList:true, subtree:true });
         }
-    });
+        else if( eventListenerSupported ){
+            obj.addEventListener('DOMNodeInserted', callback, false);
+            obj.addEventListener('DOMNodeRemoved', callback, false);
+        }
+    }
+})();
+
+// Observe a specific DOM element:
+observeDOM( document.body, function(){ 
+    console.log('dom changed');
 });
-
-observer.observe(document.body, {
-    attributes: true,
-    childList: true,
-    characterData: true
-});
-
-setTimeout(function () {
-    addElementOnDelay();
-}, 1000);
-
-function addElementOnDelay() {
-    var node = document.createElement("div");
-    node.id = "test_id";
-    node.innerHTML = "dsfdsfs";
-    document.getElementsByTagName('body')[0].appendChild(node);
-}
