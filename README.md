@@ -1,35 +1,25 @@
-# Modal Killer #
+# NOverlay #
 
-An extension for Google Chrome to destroy modal windows as soon as they are added to the DOM
+An extension for Google Chrome to prevent overlays (often called modal windows) from being added to the webpage
 
 # Why? #
 
-Modal windows have become the new pop-up window. Just as pop-up windows were abused by devs in the late '90s to sell advertising, so too are modal windows being abused to bug users into signing up for accounts, signing up for newsletters, or drawing attention to something else the user probably doesn't care about.
+Modal windows have become the new pop-up window. Just as pop-up windows were abused by developers in the late '90s to sell advertising, so too are modal windows being abused to bug users into signing up for accounts, signing up for newsletters, or drawing attention to something else the user probably doesn't care about.
 
-Modal smasher intends to be the pop-up blocker of modal windows.
+NOverlay intends to be the pop-up blocker of modal windows.
 
-### What is this repository for? ###
+### What does it do? ###
 
-* Destroys modals that appear within 30 seconds of the page opening
-* 
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Immediately destroys modal windows that are added to the DOM at any point
+* Allows whitelisting of entire sites
+* Allows whitelisting of specific modal windows
+* Allows custom filters to be added
 
-### How do I get set up? ###
+### Contributing ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
+* Branch off of dev
+* Clearly named branch specific bugfix/feature
 
 ### Who do I talk to? ###
 
 * Repo owner or admin
-* Other community or team contact
