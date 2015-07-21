@@ -1,25 +1,27 @@
-var observeDOM = (function(){
+var observeDOM = (function() {
     var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
         eventListenerSupported = window.addEventListener;
 
-    return function(obj, callback){
-        if( MutationObserver ){
-            // define a new observer
-            var obs = new MutationObserver(function(mutations, observer){
-                if( mutations[0].addedNodes.length || mutations[0].removedNodes.length )
-                    callback();
+    return function(obj, callback) {
+        if( MutationObserver ) {
+            var obs = new MutationObserver(function(mutations, observer) {
+                if(mutations[0].addedNodes.length)
+                    callback(mutations[0].addedNodes);
             });
-            // have the observer observe foo for changes in children
-            obs.observe( obj, { childList:true, subtree:true });
+            if (obj != null) obs.observe( obj, { childList:true, subtree:true });
         }
-        else if( eventListenerSupported ){
+        else if( eventListenerSupported ) {
             obj.addEventListener('DOMNodeInserted', callback, false);
             obj.addEventListener('DOMNodeRemoved', callback, false);
         }
     }
 })();
 
-// Observe a specific DOM element:
-observeDOM( document.body, function(){ 
-    console.log('dom changed');
+observeDOM( document.body, function(mutations) {
+    for(var i = 0; i < mutations.length; i++) {
+        if (mutations[i].id == "test-add") {
+            mutations[i].parentNode.removeChild(mutations[i]);
+            console.log("removing " + mutations[i].id)
+        }
+    }
 });
